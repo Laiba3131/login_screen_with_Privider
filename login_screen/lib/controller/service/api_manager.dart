@@ -6,10 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:login_screen/controller/service/endpoints.dart';
 import 'package:login_screen/utils/utils.dart';
 
-
-
-
 class ApiManager{
+  // static function ko direct class name sy call kr sakty hain
   static login(BuildContext context,String email, String password )
   async {
     try{
@@ -19,12 +17,12 @@ class ApiManager{
     "password":password
 });
 
-
 var res = jsonDecode(response.body);
 
 showSnackBar(context, res["message"]);
 return res;
-}catch(e){
+}
+catch(e){
 
   showSnackBar(context, e.toString());
  

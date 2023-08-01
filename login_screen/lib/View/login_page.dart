@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:login_screen/controller/provider/login_provider.dart';
+import 'package:login_screen/utils/preferences.dart';
 import 'package:provider/provider.dart';
+
+import '../utils/utils.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,8 +17,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
 
-  TextEditingController email= TextEditingController();
-   TextEditingController password= TextEditingController();
+  TextEditingController emailController= TextEditingController();
+   TextEditingController passwordController= TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        CustomTextField("Email", " laibaazam.31@gmail.com", email),
+                        CustomTextField("Email", " laibaazam.31@gmail.com", emailController),
                         SizedBox(
                           height: 15,
                         ),
@@ -91,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 8.0),
                                     child: TextField(
-                                      controller: password,
+                                      controller: passwordController,
                                       obscureText: true,
                                       decoration: InputDecoration(
                                         hintText: "****",
@@ -113,7 +117,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: ElevatedButton.styleFrom(primary: Colors.black),
                             onPressed: (() {
                                 var provider = context.read<LoginProvider>();
-                           provider.login(context,email: email.text, password: password.text);
+                           provider.login1(context,email1: emailController.text, password1: passwordController.text);
+                          // var getInfo= Preference.getToken();
+                          //  if(getInfo!= null)
+                          //  {
+                          //   pushUntil(context, HomeScreen());
+                          //  }
+                          //  else{
+                          //   pushUntil(context, LoginScreen());
+                          //  }
                             }),
                             child: Text(
                               "Login",
