@@ -104,25 +104,21 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ]),
                           ),
                         ),
+
+                       //CustomTextField("Password", "*****", password),
                         SizedBox(
                           height: 20,
                         ),
-                        InkWell(
-                          onTap: () {
-                
-                            var provider = context.read<LoginProvider>();
-                             provider.login(context,email: email.text, password: password.text);
-                
-                            
-                          },
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(primary: Colors.black),
-                              onPressed: (() {}),
-                              child: Text(
-                                "Login",
-                                style: TextStyle(color: Colors.white),
-                              )),
-                        ),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(primary: Colors.black),
+                            onPressed: (() {
+                                var provider = context.read<LoginProvider>();
+                           provider.login(context,email: email.text, password: password.text);
+                            }),
+                            child: Text(
+                              "Login",
+                              style: TextStyle(color: Colors.white),
+                            )),
                         SizedBox(
                           height: 25,
                         ),

@@ -13,7 +13,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
-    );
+      backgroundColor: Colors.grey,
+      body: 
+      Container(
+        child: Center(child: 
+        Text("Login Successfully")),
+      )
+      );
   }
 }
