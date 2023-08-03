@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:login_screen/utils/utils.dart';
+
+import 'login_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -25,10 +28,12 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
+                IconButton(onPressed: (){
+                  pop(context);
+                }, icon:   Icon(
                     Icons.arrow_back,
                     color: Colors.white,
-                  ),
+                  ),),
                   Text(
                     "Sign Up",
                     style: TextStyle(
@@ -157,11 +162,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       const Text("Already have any account?"),
                       TextButton(
                         child: const Text(
-                          'Sign in',
+                          'Login',
                           style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
                         onPressed: () {
-                          //signup screen
+                        push(context, LoginScreen());
                         },
                       )
                     ],
