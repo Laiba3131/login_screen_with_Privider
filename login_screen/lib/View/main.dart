@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context)=> LoginProvider()),
+        ChangeNotifierProvider(create: (context)=> SignUpPage()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
