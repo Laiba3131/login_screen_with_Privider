@@ -18,15 +18,31 @@ class ApiManager{
 });
 
 var res = jsonDecode(response.body);
-
 showSnackBar(context, res["message"]);
 return res;
 }
 catch(e){
 
   showSnackBar(context, e.toString());
- 
 }
+  }
 
+  static signup(BuildContext context, String name, String email, String password) async
+  {
+      try{
+        var url=Uri.parse(Base_url_signup+signup_endpoint);
+        var response= await http.post(url,body: {
+          "name": name,
+          "email": email,
+          "password": password
+        });
+
+        var res = jsonDecode(response.body);
+        showSnackBar(context, res["message"]);
+        return res;
+      } catch(e){
+        showSnackBar(context, e.toString());
+      }
+      
   }
 }
