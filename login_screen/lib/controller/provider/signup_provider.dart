@@ -27,7 +27,7 @@ class SignupProvider extends ChangeNotifier{
 
      if(res!= null)
      {
-      pushUntil(context, HomeScreen());
+     // pushUntil(context, HomeScreen());
       isLoading=false;
       ChangeNotifier();
      }
