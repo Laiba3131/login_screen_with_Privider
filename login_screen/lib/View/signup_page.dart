@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:login_screen/utils/utils.dart';
+import 'package:provider/provider.dart';
 
+import '../controller/provider/signup_provider.dart';
 import 'login_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -13,6 +15,10 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+    TextEditingController condirmPasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,11 +70,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   SizedBox(
                     height: 15,
                   ),
-                  MyField("Name", "Enter"),
+                  MyField("Name", "Enter", nameController),
                   SizedBox(
                     height: 15,
                   ),
-                  MyField("Email", " laibaazam.31@gmail.com"),
+                  MyField("Email", " laibaazam.31@gmail.com", emailController),
                   SizedBox(
                     height: 15,
                   ),
@@ -95,6 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             Padding(
                                 padding: const EdgeInsets.only(left: 8.0),
                                 child: TextField(
+                                  controller: passwordController,
                                     obscureText: true,
                                     decoration: InputDecoration(
                                       hintText: "* * * *",
@@ -132,6 +139,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: TextField(
+                                controller: condirmPasswordController,
                                 obscureText: true,
                                 decoration: InputDecoration(
                                   hintText: "* * * *",
@@ -149,7 +157,10 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(primary: Colors.black),
-                      onPressed: (() {}),
+                      onPressed: (() {
+                         var provider = context.read<SignupProvider>();
+                         provider.signup1(context, name1: nameController.text, email1: emailController.text, password1: passwordController.text);
+                      }),
                       child: Text(
                         "Sign Up",
                         style: TextStyle(color: Colors.white),
@@ -182,7 +193,7 @@ class _SignUpPageState extends State<SignUpPage> {
 }
 
 
-Widget MyField(String ch, String hint) {
+Widget MyField(String ch, String hint , TextEditingController con) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 50),
     child: Container(
@@ -203,6 +214,7 @@ Widget MyField(String ch, String hint) {
             left: 8.0,
           ),
           child: TextField(
+            controller: con,
             decoration: InputDecoration(
               hintText: hint,
               enabledBorder: UnderlineInputBorder(
