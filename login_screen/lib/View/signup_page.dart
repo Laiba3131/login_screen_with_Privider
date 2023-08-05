@@ -72,7 +72,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 15,
                   ),
                   //MyField("Name", "Enter", nameController),
-                   customTextFieldClass(ch: "Name", hint: "Enter Name",con: emailController,),
+                   customTextFieldClass(ch: "Name", hint: "Enter Name",con: nameController,),
                   SizedBox(
                     height: 15,
                   ),
