@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:login_screen/controller/provider/login_provider.dart';
 import 'package:login_screen/utils/preferences.dart';
+import 'package:login_screen/utils/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/utils.dart';
@@ -69,7 +70,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        CustomTextField("Email", " laibaazam.31@gmail.com", emailController),
+                     //   CustomTextField("Email", " laibaazam.31@gmail.com", emailController),
+                     customTextFieldClass(ch: "Email", hint: "laibaazam.31@gmail.com",con: emailController,),
                         SizedBox(
                           height: 15,
                         ),
@@ -165,39 +167,3 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-
-
-Widget CustomTextField(String ch, String hint , TextEditingController con) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 50),
-    child: Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: Colors.white),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0, left: 8.0),
-          child: Text(
-            ch,
-            style: TextStyle(
-                fontSize: 15, color: Colors.black, fontWeight: FontWeight.w500),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 8.0,
-          ),
-          child: TextField(
-            controller: con,
-            decoration: InputDecoration(
-              hintText: hint,
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
-            ),
-          ),
-        ),
-      ]),
-    ),
-  );
-}

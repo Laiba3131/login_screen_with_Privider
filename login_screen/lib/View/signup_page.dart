@@ -5,6 +5,7 @@ import 'package:login_screen/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 import '../controller/provider/signup_provider.dart';
+import '../utils/widgets.dart';
 import 'login_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -70,11 +71,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   SizedBox(
                     height: 15,
                   ),
-                  MyField("Name", "Enter", nameController),
+                  //MyField("Name", "Enter", nameController),
+                   customTextFieldClass(ch: "Name", hint: "Enter Name",con: emailController,),
                   SizedBox(
                     height: 15,
                   ),
-                  MyField("Email", " laibaazam.31@gmail.com", emailController),
+                 // MyField("Email", " laibaazam.31@gmail.com", emailController),
+                  customTextFieldClass(ch: "Email", hint: "laibaazam.31@gmail.com",con: emailController,),
                   SizedBox(
                     height: 15,
                   ),
@@ -190,40 +193,4 @@ class _SignUpPageState extends State<SignUpPage> {
 
     );
   }
-}
-
-
-Widget MyField(String ch, String hint , TextEditingController con) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 50),
-    child: Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: Colors.white),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0, left: 8.0),
-          child: Text(
-            ch,
-            style: TextStyle(
-                fontSize: 15, color: Colors.black, fontWeight: FontWeight.w500),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 8.0,
-          ),
-          child: TextField(
-            controller: con,
-            decoration: InputDecoration(
-              hintText: hint,
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.white),
-              ),
-            ),
-          ),
-        ),
-      ]),
-    ),
-  );
 }
