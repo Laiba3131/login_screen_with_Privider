@@ -22,14 +22,14 @@ class SignupProvider extends ChangeNotifier{
     }
     else{
       isLoading=true;
-      ChangeNotifier();
+      notifyListeners();
      var res= await ApiManager.signup(context, name1, email1, password1);
 
      if(res!= null)
      {
      // pushUntil(context, HomeScreen());
       isLoading=false;
-      ChangeNotifier();
+      notifyListeners();
      }
 
     }
