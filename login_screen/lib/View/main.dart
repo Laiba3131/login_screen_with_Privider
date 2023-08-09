@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../controller/provider/login_provider.dart';
 import '../controller/provider/signup_provider.dart';
+import 'vedio_playlist_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
        
-       home: LoginScreen(),
+       home: VideoPlaylistApp(),
       ),
     );
   }
