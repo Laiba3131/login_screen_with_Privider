@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:login_screen/controller/provider/get_playlist_provider.dart';
 import 'package:login_screen/utils/utils.dart';
-class VideoPlaylistScreen extends StatelessWidget {
+import 'package:provider/provider.dart';
+
+class VideoPlaylistScreen extends StatefulWidget {
+  @override
+  State<VideoPlaylistScreen> createState() => _VideoPlaylistScreenState();
+}
+
+class _VideoPlaylistScreenState extends State<VideoPlaylistScreen> {
   final List<String> videoTitles = [
     'Video 1',
     'Video 2',
@@ -8,35 +16,44 @@ class VideoPlaylistScreen extends StatelessWidget {
     // Add more video titles here
   ];
 
+  void initState() {
+    getPlaylist();
+    super.initState();
+  }
+
+  getPlaylist() {
+    var provider = context.read<GetPlayListProvider>();
+    provider.getPlaylist(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Video Playlist'),
       ),
-      body: VideoList(videoTitles: videoTitles),
-    );
-  }
-}
-
-class VideoList extends StatelessWidget {
-  final List<String> videoTitles;
-
-  VideoList({required this.videoTitles});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: videoTitles.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: Icon(Icons.play_arrow),
-          title: Text(videoTitles[index]),
-          onTap: () {
-           push(context,  VideoPlayerScreen(videoTitle: videoTitles[index]));
-          },
-        );
-      },
+      body: Builder(builder: (context) {
+        var pro = context.watch<GetPlayListProvider>();
+        return pro.loading
+            ? Center(
+                child: CircularProgressIndicator.adaptive(),
+              )
+            : ListView(
+                children: [
+                  for (int i = 0; i < pro.playlist["data"].length; i++)
+                    ListTile(
+                      leading: Icon(Icons.play_arrow),
+                      title: Text(
+                        pro.playlist["data"][i]["name"],
+                      ),
+                      // onTap: () {
+                      //   push(context,
+                      //       VideoPlayerScreen(videoTitle: videoTitles[i]));
+                      // },
+                    ),
+                ],
+              );
+      }),
     );
   }
 }

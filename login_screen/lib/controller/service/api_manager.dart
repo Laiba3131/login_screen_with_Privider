@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,5 +45,19 @@ catch(e){
         showSnackBar(context, e.toString());
       }
       
+  }
+
+  static getPlayList(context) async
+  {
+    try {
+      var Url=Uri.parse(Base_url+getPlaylistEndpoint);
+      var response= await http.get(Url);
+      var res = jsonEncode(response.body);
+      return res;
+    }
+    catch(e)
+    {
+         showSnackBar(context, e.toString());
+    }
   }
 }
