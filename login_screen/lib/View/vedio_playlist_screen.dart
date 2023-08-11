@@ -1,13 +1,36 @@
+import 'dart:js';
 import 'package:flutter/material.dart';
+import 'package:login_screen/controller/provider/get_playlist_provider.dart';
 import 'package:login_screen/utils/utils.dart';
-
+import 'package:provider/provider.dart';
 import 'all_vedio_screen.dart';
 
 
-class VideoPlaylistApp extends StatelessWidget {
+class VideoPlaylistApp extends StatefulWidget {
+
+  @override
+  State<VideoPlaylistApp> createState() => _VideoPlaylistAppState();
+}
+
+class _VideoPlaylistAppState extends State<VideoPlaylistApp> {
+    TextEditingController playlistName= TextEditingController();
+   
+  void initState() {
+    getPlaylist();
+    super.initState();
+  }
+
+  getPlaylist() {
+    var provider = context.read<GetPlayListProvider>();
+    provider.getPlaylist(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){
+       CustomTextFiled(playlistName);
+      }),
       body: Column(children: [
         Image(
           height: 200,
@@ -24,9 +47,49 @@ class VideoPlaylistApp extends StatelessWidget {
               push(context, VideoPlaylistScreen());
             }, child: Text("See All"))
           ],),
-        )
+        ),
+
+        Builder(
+          builder: (context) {
+           var pro= context.watch<GetPlayListProvider>();
+           return pro.loading2? Center(child: CircularProgressIndicator.adaptive(),):
+             ListView(
+                      children: [
+                        for (int i = 0; i < pro.playlist["data"].length; i++)
+                          ListTile(
+                            leading: Icon(Icons.play_arrow),
+                            title: Text(
+                              pro.playlist["data"][i]["name"].toString(),
+                            ),
+                           
+                          ),
+                      ],
+                    );
+          }
+        ),
       ]
       ),
     );
   }
+}
+
+
+Widget CustomTextFiled(TextEditingController con)
+{
+  return Container(
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.blue),
+    ),
+    child: Column(children: [
+      Text("Enter playList Name:"),
+      TextField(
+        controller: con,
+       decoration: InputDecoration(
+        hintText: "PlayList Name",
+       ),
+      ),
+      ElevatedButton(onPressed: (){}, child: Text("Create"))
+    ]),
+  )
+  ;
 }

@@ -52,12 +52,26 @@ catch(e){
     try {
       var Url=Uri.parse(Base_url+getPlaylistEndpoint);
       var response= await http.get(Url);
-      var res = jsonEncode(response.body);
+      var res = jsonDecode(response.body);
       return res;
     }
     catch(e)
     {
          showSnackBar(context, e.toString());
+    }
+  }
+
+  static addPlayList(context, name) async
+  {
+    try{
+      var Url= Uri.parse(Base_url+ addPlaylistEndpoint);
+      var response = await  http.post(Url, body: {"name": name});
+      var res= jsonDecode(response.body);
+      showSnackBar(context, res["message"]);
+    }
+    catch(e)
+    {
+       showSnackBar(context, e.toString());
     }
   }
 }

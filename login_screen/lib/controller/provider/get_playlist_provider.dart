@@ -3,15 +3,25 @@ import 'package:login_screen/controller/service/api_manager.dart';
 
 class GetPlayListProvider extends ChangeNotifier
 {
-    bool loading = false;
+    bool loading1= false;
+    bool loading2= false;
     var playlist;
 
     getPlaylist(context) async
     {
-      loading= true;
+      loading1= true;
       notifyListeners();
       playlist=await ApiManager.getPlayList(context);
-      loading= false;
+      loading1= false;
       notifyListeners();
+    }
+
+    addPlaylist(context, name) async
+    {
+       loading2= true;
+       notifyListeners();
+       await ApiManager.addPlayList(context, name);
+       loading2=false;
+       notifyListeners();
     }
 }
