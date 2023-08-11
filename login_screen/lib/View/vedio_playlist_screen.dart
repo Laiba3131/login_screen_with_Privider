@@ -15,23 +15,23 @@ class VideoPlaylistApp extends StatefulWidget {
 class _VideoPlaylistAppState extends State<VideoPlaylistApp> {
     TextEditingController playlistName= TextEditingController();
   
-  void initState() {
-    getPlaylist();
-    super.initState();
-  }
+  // void initState() {
+  //   getPlaylist();
+  //   super.initState();
+  // }
 
-  getPlaylist() {
-    var provider = context.read<GetPlayListProvider>();
-    provider.getPlaylist(context);
-  }
+  // getPlaylist() {
+  //   var provider = context.read<GetPlayListProvider>();
+  //   provider.getPlaylist(context);
+  // }
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){
-       CustomTextFiled(playlistName);
-      }),
+      // floatingActionButton: FloatingActionButton(onPressed: (){
+      //  CustomTextFiled(playlistName);
+      // }),
       body: Column(children: [
         Image(
           height: 200,
@@ -50,24 +50,24 @@ class _VideoPlaylistAppState extends State<VideoPlaylistApp> {
           ],),
         ),
 
-        Builder(
-          builder: (context) {
-           var pro= context.watch<GetPlayListProvider>();
-           return pro.loading1? Center(child: CircularProgressIndicator.adaptive(),):
-             ListView(
-                      children: [
-                        for (int i = 0; i < pro.playlist["data"].length; i++)
-                          ListTile(
-                            leading: Icon(Icons.play_arrow),
-                            title: Text(
-                              pro.playlist["data"][i]["name"].toString(),
-                            ),
+        // Builder(
+        //   builder: (context) {
+        //    var pro= context.watch<GetPlayListProvider>();
+        //    return pro.loading1? Center(child: CircularProgressIndicator.adaptive(),):
+        //      ListView(
+        //               children: [
+        //                 for (int i = 0; i < pro.playlist["data"].length; i++)
+        //                   ListTile(
+        //                     leading: Icon(Icons.play_arrow),
+        //                     title: Text(
+        //                       pro.playlist["data"][i]["name"].toString(),
+        //                     ),
                            
-                          ),
-                      ],
-                    );
-          }
-        ),
+        //                   ),
+        //               ],
+        //             );
+        //   }
+        // ),
       ]
       ),
     );
@@ -75,22 +75,22 @@ class _VideoPlaylistAppState extends State<VideoPlaylistApp> {
 }
 
 
-Widget CustomTextFiled(TextEditingController con)
-{
-  return Container(
-    decoration: BoxDecoration(
-      border: Border.all(color: Colors.blue),
-    ),
-    child: Column(children: [
-      Text("Enter playList Name:"),
-      TextField(
-        controller: con,
-       decoration: InputDecoration(
-        hintText: "PlayList Name",
-       ),
-      ),
-      ElevatedButton(onPressed: (){}, child: Text("Create")),
-    ]),
-  )
-  ;
-}
+// Widget CustomTextFiled(TextEditingController con)
+// {
+//   return Container(
+//     decoration: BoxDecoration(
+//       border: Border.all(color: Colors.blue),
+//     ),
+//     child: Column(children: [
+//       Text("Enter playList Name:"),
+//       TextField(
+//         controller: con,
+//        decoration: InputDecoration(
+//         hintText: "PlayList Name",
+//        ),
+//       ),
+//       ElevatedButton(onPressed: (){}, child: Text("Create")),
+//     ]),
+//   )
+//   ;
+// }

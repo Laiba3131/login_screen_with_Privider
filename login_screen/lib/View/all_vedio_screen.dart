@@ -45,7 +45,7 @@ class _VideoPlaylistScreenState extends State<VideoPlaylistScreen> {
                       ListTile(
                         leading: Icon(Icons.play_arrow),
                         title: Text(
-                          pro.playlist["data"][i]["name"].toString(),
+                          pro.playlist["data"][i]["name"],
                         ),
                         // onTap: () {
                         //   push(context,
