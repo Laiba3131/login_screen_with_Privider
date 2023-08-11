@@ -14,7 +14,7 @@ class VideoPlaylistApp extends StatefulWidget {
 
 class _VideoPlaylistAppState extends State<VideoPlaylistApp> {
     TextEditingController playlistName= TextEditingController();
-   
+  
   void initState() {
     getPlaylist();
     super.initState();
@@ -24,6 +24,7 @@ class _VideoPlaylistAppState extends State<VideoPlaylistApp> {
     var provider = context.read<GetPlayListProvider>();
     provider.getPlaylist(context);
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class _VideoPlaylistAppState extends State<VideoPlaylistApp> {
         Builder(
           builder: (context) {
            var pro= context.watch<GetPlayListProvider>();
-           return pro.loading2? Center(child: CircularProgressIndicator.adaptive(),):
+           return pro.loading1? Center(child: CircularProgressIndicator.adaptive(),):
              ListView(
                       children: [
                         for (int i = 0; i < pro.playlist["data"].length; i++)
@@ -88,7 +89,7 @@ Widget CustomTextFiled(TextEditingController con)
         hintText: "PlayList Name",
        ),
       ),
-      ElevatedButton(onPressed: (){}, child: Text("Create"))
+      ElevatedButton(onPressed: (){}, child: Text("Create")),
     ]),
   )
   ;
