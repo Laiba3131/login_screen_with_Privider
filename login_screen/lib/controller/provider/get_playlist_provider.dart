@@ -5,6 +5,7 @@ class GetPlayListProvider extends ChangeNotifier
 {
     bool loading1= false;
     bool loading2= false;
+    bool loading3= false;
     var playlist;
 
     getPlaylist(context) async
@@ -23,5 +24,12 @@ class GetPlayListProvider extends ChangeNotifier
        await ApiManager.addPlayList(context, name);
        loading2=false;
        notifyListeners();
+    }
+
+    delPlayList(context, id) async
+    {
+      loading3=true;
+      notifyListeners();
+      await ApiManager.delPlayList(context, id);
     }
 }

@@ -8,3 +8,5 @@ const Base_url_signup = "http://54.196.245.7:3000/api/";
 const getPlaylistEndpoint = "playlist/getAllPlaylist";
 
 const addPlaylistEndpoint = "playlist/addNewPlaylist";
+
+const delPlayListEndpoint=  "playlist/deletePlaylist/";

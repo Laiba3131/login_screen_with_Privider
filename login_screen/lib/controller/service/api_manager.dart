@@ -69,10 +69,26 @@ catch(e){
       var response = await  http.post(Url, body: {"name": name});
       var res= jsonDecode(response.body);
       showSnackBar(context, res["message"]);
+      return res;
     }
     catch(e)
     {
        showSnackBar(context, e.toString());
     }
   }
+
+   static delPlayList(context,id ) async
+   {
+    try{
+       var Url= Uri.parse(Base_url+ delPlayListEndpoint);
+       var response= await http.delete(Url);
+       var res= jsonDecode(response.body);
+       showSnackBar(context, res["message"]);
+       return res;
+    }
+    catch(e)
+    {
+     showSnackBar(context, e.toString());
+    }
+   }
 }

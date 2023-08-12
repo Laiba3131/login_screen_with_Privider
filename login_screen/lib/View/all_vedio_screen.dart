@@ -47,10 +47,12 @@ class _VideoPlaylistScreenState extends State<VideoPlaylistScreen> {
                         title: Text(
                           pro.playlist["data"][i]["name"],
                         ),
-                        // onTap: () {
-                        //   push(context,
-                        //       VideoPlayerScreen(videoTitle: videoTitles[i]));
-                        // },
+                        trailing: InkWell(
+                          onTap: (() {
+                            for(int i=0; i< pro.playlist["data"].length; i++)
+                               pro.PlayList["data"][i]["id"];
+                          }),
+                          child: Icon(Icons.delete)),
                       ),
                   ],
                 ),
