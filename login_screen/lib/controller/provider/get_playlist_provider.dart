@@ -22,6 +22,7 @@ class GetPlayListProvider extends ChangeNotifier
        loading2= true;
        notifyListeners();
        await ApiManager.addPlayList(context, name);
+       getPlaylist(context);
        loading2=false;
        notifyListeners();
     }
@@ -31,5 +32,8 @@ class GetPlayListProvider extends ChangeNotifier
       loading3=true;
       notifyListeners();
       await ApiManager.delPlayList(context, id);
+      getPlaylist(context);
+      loading3=false;
+      notifyListeners();
     }
 }

@@ -49,8 +49,8 @@ class _VideoPlaylistScreenState extends State<VideoPlaylistScreen> {
                         ),
                         trailing: InkWell(
                           onTap: (() {
-                            for(int i=0; i< pro.playlist["data"].length; i++)
-                               pro.PlayList["data"][i]["id"];
+                             //for(int i=0; i< pro.playlist["data"].length; i++)
+                               pro.delPlayList(context, pro.playlist["data"][i]["id"]);
                           }),
                           child: Icon(Icons.delete)),
                       ),

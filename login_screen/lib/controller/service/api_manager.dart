@@ -80,7 +80,7 @@ catch(e){
    static delPlayList(context,id ) async
    {
     try{
-       var Url= Uri.parse(Base_url+ delPlayListEndpoint);
+       var Url= Uri.parse(Base_url+ delPlayListEndpoint + id);
        var response= await http.delete(Url);
        var res= jsonDecode(response.body);
        showSnackBar(context, res["message"]);
