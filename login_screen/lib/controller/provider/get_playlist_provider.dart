@@ -6,6 +6,8 @@ class GetPlayListProvider extends ChangeNotifier {
   bool loading2 = false;
   bool loading3 = false;
   bool loading4 = false;
+
+  
   var playlist;
 
   getPlaylist(context) async {
