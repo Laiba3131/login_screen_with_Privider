@@ -25,7 +25,6 @@ login1(context, {email1, password1})async{
 
   notifyListeners();
    var res = await ApiManager.login(context, email1, password1);
-
   if ( res["data"] != null )
   {
     await Preference.saveToken(res["data"]["access_token"]);
@@ -35,7 +34,6 @@ login1(context, {email1, password1})async{
  
   }
    
-}
-                   }
+} }
 
 }
