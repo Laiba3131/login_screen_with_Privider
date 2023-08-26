@@ -64,16 +64,16 @@ class _VideoPlaylistAppState extends State<VideoPlaylistApp> {
                 : ListView(
                     shrinkWrap: true,
                     children: [
-                      for (int i = 0; i < pro.playlist["data"].length; i++)
+                      for (int i = 0; i < pro.playlist!.data!.length; i++)
                         ListTile(
                           leading: InkWell(
                               onTap: () {
                                 push(context,
-                                    UpdatedScreen(pro.playlist["data"][i]));
+                                    UpdatedScreen(pro.playlist!.data![i]));
                               },
                               child: Icon(Icons.play_arrow)),
                           title: Text(
-                            pro.playlist["data"][i]["name"],
+                            pro.playlist!.data![i].name!,
                           ),
                         ),
                     ],

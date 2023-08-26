@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:login_screen/controller/service/api_manager.dart';
+import 'package:login_screen/model/get_playlist_model.dart';
 
 class GetPlayListProvider extends ChangeNotifier {
   bool loading1 = false;
@@ -8,7 +9,7 @@ class GetPlayListProvider extends ChangeNotifier {
   bool loading4 = false;
 
   
-  var playlist;
+  GetPlaylistModel? playlist;
 
   getPlaylist(context) async {
     loading1 = true;

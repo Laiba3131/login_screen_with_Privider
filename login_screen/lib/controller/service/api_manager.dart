@@ -6,8 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:login_screen/controller/service/endpoints.dart';
+import 'package:login_screen/model/addplaylist_model.dart';
+import 'package:login_screen/model/delPlayList_model.dart';
 import 'package:login_screen/model/get_playlist_model.dart';
+import 'package:login_screen/model/signup_model.dart';
 import 'package:login_screen/utils/utils.dart';
+
+import '../../model/login_model.dart';
+import '../../model/updatePlayList_model.dart';
 
 class ApiManager {
   // static function ko direct class name sy call kr sakty hain
@@ -19,7 +25,13 @@ class ApiManager {
 
       var res = jsonDecode(response.body);
       showSnackBar(context, res["message"]);
-      return res;
+     var login_model = LoginModel.fromJson(res); 
+     if(login_model!= null)
+      return login_model;
+    else
+    {
+      showSnackBar(context, "This variable is null");
+    }
     } catch (e) {
       showSnackBar(context, e.toString());
     }
@@ -34,7 +46,8 @@ class ApiManager {
 
       var res = jsonDecode(response.body);
       showSnackBar(context, res["message"]);
-      return res;
+      var signup_model = SignUpModel.fromJson(res); 
+      return signup_model;
     } catch (e) {
       showSnackBar(context, e.toString());
     }
@@ -58,7 +71,8 @@ class ApiManager {
       var response = await http.post(Url, body: {"name": name});
       var res = jsonDecode(response.body);
       showSnackBar(context, res["message"]);
-      return res;
+      var addPlayList= AddPlaylistModel.fromJson(res);
+      return addPlayList;
     } catch (e) {
       showSnackBar(context, e.toString());
     }
@@ -70,7 +84,8 @@ class ApiManager {
       var response = await http.delete(Url);
       var res = jsonDecode(response.body);
       showSnackBar(context, res["message"]);
-      return res;
+      var delPlayList = DelPlaylistModel.fromJson(res);
+      return delPlayList;
     } catch (e) {
       showSnackBar(context, e.toString());
     }
@@ -82,7 +97,8 @@ class ApiManager {
       var response = await http.patch(Url, body: {"name": UpdatesName});
       var res = jsonDecode(response.body);
       showSnackBar(context, res["message"]);
-      return res;
+      var updateplaylist= UpdatePlaylistModel.fromJson(res);
+      return updateplaylist;
     } catch (e) {
       showSnackBar(context, e.toString());
     }

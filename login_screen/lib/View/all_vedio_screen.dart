@@ -41,16 +41,17 @@ class _VideoPlaylistScreenState extends State<VideoPlaylistScreen> {
             : Container(
               child: ListView(
                   children: [
-                    for (int i = 0; i < pro.playlist["data"].length; i++)
+                    for (int i = 0; i < pro.playlist!.data!.length; i++)
                       ListTile(
                         leading: Icon(Icons.play_arrow),
                         title: Text(
-                          pro.playlist["data"][i]["name"],
+                          pro.playlist!.data![i].name!,
                         ),
                         trailing: InkWell(
                           onTap: (() {
                              //for(int i=0; i< pro.playlist["data"].length; i++)
-                               pro.delPlayList(context, pro.playlist["data"][i]["id"]);
+                             // pro.provider["data"][i]["id"]
+                               pro.delPlayList(context, pro.playlist!.data![i].id);
                           }),
                           child: Icon(Icons.delete)),
                       ),

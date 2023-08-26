@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:login_screen/View/home_screen.dart';
 import 'package:login_screen/controller/service/api_manager.dart';
+import 'package:login_screen/model/signup_model.dart';
 import 'package:login_screen/utils/utils.dart';
 
 class SignupProvider extends ChangeNotifier{
@@ -23,7 +24,7 @@ class SignupProvider extends ChangeNotifier{
     else{
       isLoading=true;
       notifyListeners();
-     var res= await ApiManager.signup(context, name1, email1, password1);
+     SignUpModel res= await ApiManager.signup(context, name1, email1, password1);
 
      if(res!= null)
      {
