@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:login_screen/controller/service/endpoints.dart';
+import 'package:login_screen/model/get_playlist_model.dart';
 import 'package:login_screen/utils/utils.dart';
 
 class ApiManager {
@@ -44,7 +45,8 @@ class ApiManager {
       var Url = Uri.parse(Base_url + getPlaylistEndpoint);
       var response = await http.get(Url);
       var res = jsonDecode(response.body);
-      return res;
+      var dat= GetPlaylistModel.fromJson(res);
+      return dat;
     } catch (e) {
       showSnackBar(context, e.toString());
     }
