@@ -19,16 +19,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> LoginProvider()),
-        ChangeNotifierProvider(create: (context)=> SignupProvider()),
-         ChangeNotifierProvider(create: (context)=> GetPlayListProvider()),
+        ChangeNotifierProvider(create: (context) => LoginProvider()),
+        ChangeNotifierProvider(create: (context) => SignupProvider()),
+        ChangeNotifierProvider(create: (context) => GetPlayListProvider()),
       ],
-
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-       
-       home: VideoPlaylistApp(),
-     // home: LoginScreen(),
+
+        home: VideoPlaylistApp(),
+        // home: LoginScreen(),
       ),
     );
   }
